@@ -16,12 +16,12 @@ module.exports = {
 	rules: {
 		"no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
 		"no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-		"prettier/prettier": ['warn',{
+		"prettier/prettier": ['warn', {
 			singleQuote: true,
 			semi: true,
 			tabWidth: 4,
 			trailingComma: 'all',
-			printWidth: 180,
+			printWidth: 100,
 			bracketSpacing: true,
 			arrowParens: 'avoid',
 		}]
