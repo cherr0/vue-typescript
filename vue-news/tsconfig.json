@@ -1,9 +1,10 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
     "strict": false,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "allowJs": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -29,7 +30,6 @@
     ]
   },
   "include": [
-    "./src/",
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
