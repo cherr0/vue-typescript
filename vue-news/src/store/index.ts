@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { mutations } from './mutations';
 import { state } from './state';
 
 Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
     state: state,
+    mutations: mutations,
 };
 
 export default new Vuex.Store(store);
