@@ -1,5 +1,5 @@
 import { NewsItem } from '@/api';
-const state = {
+export const state = {
     news: [] as NewsItem[],
 };
 
