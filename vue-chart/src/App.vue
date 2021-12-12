@@ -1,18 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <canvas id="myChart" width="400" height="400"></canvas>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { ChartConfiguration } from "chart.js";
 
 export default Vue.extend({
-  name: "App",
-  components: {
-    HelloWorld,
+  mounted() {
+    const labels = ["January", "February", "March", "April", "May", "June"];
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "rgb(255, 99, 132)",
+          borderColor: "rgb(255, 99, 132)",
+          data: [0, 10, 5, 2, 20, 30, 45],
+        },
+      ],
+    };
+    const config: ChartConfiguration = {
+      type: "line",
+      data,
+      options: {},
+    };
+    const ctx = (
+      document.getElementById("myChart") as HTMLCanvasElement
+    ).getContext("2d") as CanvasRenderingContext2D;
+    new this.$_Chart(ctx, config);
   },
 });
 </script>
