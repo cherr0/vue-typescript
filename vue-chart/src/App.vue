@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart" ref="myChart" width="400" height="400"></canvas>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue, { VueConstructor } from "vue";
 import { ChartConfiguration } from "chart.js";
 
-export default Vue.extend({
+export default (
+  Vue as VueConstructor<Vue & { $refs: { my: HTMLDivElement } }>
+).extend({
+  methods: {
+    sayHi() {
+      const canvasElement = this.$refs.myChart as HTMLCanvasElement;
+    },
+  },
   mounted() {
     const labels = ["January", "February", "March", "April", "May", "June"];
     const data = {
@@ -27,9 +34,11 @@ export default Vue.extend({
       data,
       options: {},
     };
-    const ctx = (
-      document.getElementById("myChart") as HTMLCanvasElement
-    ).getContext("2d") as CanvasRenderingContext2D;
+    // const ctx = (
+    //   document.getElementById("myChart") as HTMLCanvasElement
+    // ).getContext("2d") as CanvasRenderingContext2D;
+    const canvasElement = this.$refs.myChart as HTMLCanvasElement;
+    const ctx = canvasElement.getContext("2d");
     new this.$_Chart(ctx, config);
   },
 });
